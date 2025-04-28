@@ -9,7 +9,15 @@ import { connectPostgres } from './config/dbPostgres.js';
 dotenv.config();
 const app = express();
 
-app.use(cors());
+// CORS configuration to allow requests from Netlify (frontend URL)
+const allowedOrigins = ['https://wonderful-gumdrop-b938cf.netlify.app/'];  // Replace with your actual Netlify URL
+
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,  // If you're sending cookies or other credentials, enable this
+}));
+
 app.use(express.json());
 
 // Connect databases
