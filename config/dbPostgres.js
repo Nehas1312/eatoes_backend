@@ -8,4 +8,14 @@ const pool = new Pool({
   },
 });
 
-export { pool };
+
+const connectPostgres = async () => {
+  try {
+    await pool.connect();
+    console.log('PostgreSQL connected');
+  } catch (err) {
+    console.error('PostgreSQL connection error:', err);
+  }
+};
+
+export { pool, connectPostgres };  
