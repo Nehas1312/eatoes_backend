@@ -10,13 +10,8 @@ dotenv.config();
 const app = express();
 
 // CORS configuration to allow requests from Netlify (frontend URL)
-const allowedOrigins = ['https://wonderful-gumdrop-b938cf.netlify.app/'];  // Replace with your actual Netlify URL
+app.use(cors()); // Allows requests from all origins
 
-app.use(cors({
-  origin: allowedOrigins,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true,  // If you're sending cookies or other credentials, enable this
-}));
 
 app.use(express.json());
 
